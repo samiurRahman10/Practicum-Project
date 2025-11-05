@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management System - Join</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-50 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-lg py-4 my-3">
+        <div class="flex justify-center mb-6">
+            <div class="bg-orange-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
+                +
+            </div>
+        </div>
+        <h2 class="text-center text-2xl font-semibold text-gray-800 mb-4">Join DineSmart</h2>
+        <p class="text-center text-gray-500 mb-6">Create your account to get started</p>
+
+        <form>
+            <div class="mb-4">
+                <label for="full-name" class="block text-gray-600 font-medium">Full Name</label>
+                <input type="text" id="full-name" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-600 font-medium">Email</label>
+                <input type="email" id="email" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter your email" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-600 font-medium">Phone</label>
+                <input type="text" id="phone" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-gray-600 font-medium">Password</label>
+                <input type="password" id="password" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Create a password" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="confirm-password" class="block text-gray-600 font-medium">Confirm Password</label>
+                <input type="password" id="confirm-password" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Confirm your password" required>
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500">Register</button>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="text-gray-500">Already have an account? <a href="login.html" class="text-orange-500 font-medium hover:underline">Sign in here</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

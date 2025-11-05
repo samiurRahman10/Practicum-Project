@@ -1,0 +1,95 @@
+{
+  "restaurant": {
+    "name": "The Cozy Spoon",
+     "categories": [
+    { "id": 0, "name": "All" },
+    { "id": 1, "name": "Main Course" },
+    { "id": 2, "name": "Starters" },
+    { "id": 3, "name": "Desserts" },
+    { "id": 4, "name": "Drinks" }
+  ]
+  },
+  "menu": [
+    {
+      "id": "st-001",
+      "category": "Starters",
+      "name": "Crispy Chicken Wings",
+      "description": "Marinated and deep-fried chicken wings tossed in spicy honey glaze.",
+      "price": 220,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1606755962773-0d4b1f46e8aa"
+    },
+    {
+      "id": "st-002",
+      "category": "Starters",
+      "name": "Hummus & Pita",
+      "description": "Creamy chickpea hummus served with warm pita slices and olive oil.",
+      "price": 150,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3"
+    },
+    {
+      "id": "mc-001",
+      "category": "Main Course",
+      "name": "Classic Beef Burger",
+      "description": "100% beef patty, cheddar, lettuce, tomato, and fries.",
+      "price": 350,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+    },
+    {
+      "id": "mc-002",
+      "category": "Main Course",
+      "name": "Vegetable Biryani",
+      "description": "Aromatic basmati rice cooked with mixed vegetables and spices.",
+      "price": 280,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1605475121113-2e8b8a7e0b9b"
+    },
+    {
+      "id": "mc-003",
+      "category": "Main Course",
+      "name": "Grilled Salmon",
+      "description": "Pan-seared salmon fillet with lemon butter and herbs.",
+      "price": 520,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1604909053724-6c30729cf5f3"
+    },
+    {
+      "id": "ds-001",
+      "category": "Desserts",
+      "name": "Chocolate Lava Cake",
+      "description": "Warm chocolate cake with molten center and ice cream.",
+      "price": 180,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1601972599720-0c89c3acb3f8"
+    },
+    {
+      "id": "ds-002",
+      "category": "Desserts",
+      "name": "Strawberry Cheesecake",
+      "description": "Creamy cheesecake topped with strawberry sauce.",
+      "price": 200,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+    },
+    {
+      "id": "dr-001",
+      "category": "Drinks",
+      "name": "Classic Lemonade",
+      "description": "Freshly squeezed lemonade with mint.",
+      "price": 80,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1561047029-3000e62f5bb3"
+    },
+    {
+      "id": "dr-002",
+      "category": "Drinks",
+      "name": "Iced Cappuccino",
+      "description": "Chilled espresso with milk and frothy foam.",
+      "price": 140,
+      "currency": "BDT",
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+    }
+  ]
+}

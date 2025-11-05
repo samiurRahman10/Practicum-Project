@@ -1,0 +1,26 @@
+{
+  "category": "Desserts",
+  "items": [
+    {
+      "id": "ds-001",
+      "name": "Chocolate Lava Cake",
+      "description": "Warm chocolate cake with molten center and ice cream.",
+      "price": 180,
+      "image": "https://hips.hearstapps.com/hmg-prod/images/chocolate-lava-cake-index-65c25056f21fb.jpg?crop=0.8891482670297961xw:1xh;center,top&resize=1200:*"
+    },
+    {
+      "id": "ds-002",
+      "name": "Strawberry Cheesecake",
+      "description": "Creamy cheesecake topped with strawberry sauce.",
+      "price": 200,
+      "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+    },
+    {
+      "id": "ds-003",
+      "name": "Vanilla Ice Cream",
+      "description": "Classic vanilla ice cream served with chocolate syrup.",
+      "price": 100,
+      "image": "https://www.biggerbolderbaking.com/wp-content/uploads/2023/05/homemade-vanilla-ice-cream-thubnail-scaled.jpg"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "category": "All",
+  "items": [
+    {
+      "id": "st-001",
+      "name": "Crispy Chicken Wings",
+      "description": "Marinated and deep-fried chicken wings tossed in spicy honey glaze.",
+      "price": 220,
+      "image": "https://sundaytable.co/wp-content/uploads/2024/01/garlic-butter-chicken-wings-air-fryer-or-oven-baked-1.jpg"
+    },
+    {
+      "id": "st-002",
+      "name": "Hummus & Pita",
+      "description": "Creamy chickpea hummus served with warm pita slices and olive oil.",
+      "price": 150,
+      "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3"
+    },
+    {
+      "id": "st-003",
+      "name": "Garlic Bread",
+      "description": "Toasted baguette slices with garlic butter and herbs.",
+      "price": 120,
+      "image": "https://www.foodandwine.com/thmb/pxx49mdooRZWdYRsBFzygKIU4AE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/parmesan-garlic-bread-FT-RECIPE0825-2c5ceae59ad34210886c4576e89617cd.jpg"
+    },
+    {
+      "id": "mc-001",
+      "name": "Classic Beef Burger",
+      "description": "100% beef patty, cheddar, lettuce, tomato, and fries.",
+      "price": 350,
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+    },
+    {
+      "id": "mc-002",
+      "name": "Vegetable Biryani",
+      "description": "Aromatic basmati rice cooked with mixed vegetables and spices.",
+      "price": 280,
+      "image": "https://i.ytimg.com/vi/Do7ZdUodDdw/maxresdefault.jpg"
+    },
+    {
+      "id": "mc-003",
+      "name": "Grilled Salmon",
+      "description": "Pan-seared salmon fillet with lemon butter and herbs.",
+      "price": 520,
+      "image": "https://www.thecookierookie.com/wp-content/uploads/2023/05/featured-grilled-salmon-recipe.jpg"
+    },
+     {
+      "id": "ds-001",
+      "name": "Chocolate Lava Cake",
+      "description": "Warm chocolate cake with molten center and ice cream.",
+      "price": 180,
+      "image": "https://hips.hearstapps.com/hmg-prod/images/chocolate-lava-cake-index-65c25056f21fb.jpg?crop=0.8891482670297961xw:1xh;center,top&resize=1200:*"
+    },
+    {
+      "id": "ds-002",
+      "name": "Strawberry Cheesecake",
+      "description": "Creamy cheesecake topped with strawberry sauce.",
+      "price": 200,
+      "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+    },
+    {
+      "id": "ds-003",
+      "name": "Vanilla Ice Cream",
+      "description": "Classic vanilla ice cream served with chocolate syrup.",
+      "price": 100,
+      "image": "https://www.biggerbolderbaking.com/wp-content/uploads/2023/05/homemade-vanilla-ice-cream-thubnail-scaled.jpg"
+    },
+    {
+      "id": "dr-001",
+      "name": "Classic Lemonade",
+      "description": "Freshly squeezed lemonade with mint.",
+      "price": 80,
+      "image": "https://dockhinge.com/cdn/shop/articles/lemonade.jpg?v=1663694713"
+    },
+    {
+      "id": "dr-002",
+      "name": "Iced Cappuccino",
+      "description": "Chilled espresso with milk and frothy foam.",
+      "price": 140,
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+    },
+    {
+      "id": "dr-003",
+      "name": "Mango Smoothie",
+      "description": "Refreshing mango smoothie made with ripe mangoes and milk.",
+      "price": 120,
+      "image": "https://getinspiredeveryday.com/wp-content/uploads/2023/03/Mango-Smoothie-Get-Inspired-Everyday-8.jpg"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "category": "Starters",
+  "items": [
+    {
+      "id": "st-001",
+      "name": "Crispy Chicken Wings",
+      "description": "Marinated and deep-fried chicken wings tossed in spicy honey glaze.",
+      "price": 220,
+      "image": "https://sundaytable.co/wp-content/uploads/2024/01/garlic-butter-chicken-wings-air-fryer-or-oven-baked-1.jpg"
+    },
+    {
+      "id": "st-002",
+      "name": "Hummus & Pita",
+      "description": "Creamy chickpea hummus served with warm pita slices and olive oil.",
+      "price": 150,
+      "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3"
+    },
+    {
+      "id": "st-003",
+      "name": "Garlic Bread",
+      "description": "Toasted baguette slices with garlic butter and herbs.",
+      "price": 120,
+      "image": "https://www.foodandwine.com/thmb/pxx49mdooRZWdYRsBFzygKIU4AE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/parmesan-garlic-bread-FT-RECIPE0825-2c5ceae59ad34210886c4576e89617cd.jpg"
+    }
+  ]
+}

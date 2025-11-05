@@ -1,0 +1,26 @@
+{
+  "category": "Main Course",
+  "items": [
+    {
+      "id": "mc-001",
+      "name": "Classic Beef Burger",
+      "description": "100% beef patty, cheddar, lettuce, tomato, and fries.",
+      "price": 350,
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+    },
+    {
+      "id": "mc-002",
+      "name": "Vegetable Biryani",
+      "description": "Aromatic basmati rice cooked with mixed vegetables and spices.",
+      "price": 280,
+      "image": "https://i.ytimg.com/vi/Do7ZdUodDdw/maxresdefault.jpg"
+    },
+    {
+      "id": "mc-003",
+      "name": "Grilled Salmon",
+      "description": "Pan-seared salmon fillet with lemon butter and herbs.",
+      "price": 520,
+      "image": "https://www.thecookierookie.com/wp-content/uploads/2023/05/featured-grilled-salmon-recipe.jpg"
+    }
+  ]
+}
