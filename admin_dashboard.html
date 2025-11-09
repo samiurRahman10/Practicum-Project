@@ -11,28 +11,42 @@
         .sidebar-scroll::-webkit-scrollbar {
             width: 4px;
         }
+
         .sidebar-scroll::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         .sidebar-scroll::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 4px;
         }
+
         .sidebar-scroll::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
-        .order-card {
-            transition: all 0.3s ease;
-        }
-        .order-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
+
         .page-content {
             display: none;
         }
+
         .page-content.active {
             display: block;
+        }
+
+        .order-card,
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover,
+        .menu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.active {
+            background-color: #f97316;
+            color: white;
         }
     </style>
 </head>
@@ -41,45 +55,65 @@
     <div class="flex h-screen bg-gray-50 font-sans">
         <!-- Toggle Button -->
         <button id="toggleSidebar" class="fixed bg-orange-500 text-white p-2 rounded-md md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed h-full w-64 bg-white shadow-xl transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col sidebar-scroll">
+        <aside id="sidebar"
+            class="fixed h-full w-64 bg-white shadow-xl transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col sidebar-scroll">
             <div class="flex items-center justify-center p-6">
                 <h1 class="text-3xl font-bold text-orange-500">DineSmart</h1>
             </div>
             <nav class="flex-1 px-4 py-6 space-y-4 text-gray-700 text-sm overflow-y-auto">
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md bg-orange-100 font-bold text-orange-500" data-page="dashboard">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md bg-orange-100 font-bold text-orange-500"
+                    data-page="dashboard">
                     <i class="fas fa-chart-line w-5"></i>Dashboard
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="users">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="users">
                     <i class="fas fa-users w-5"></i>Users
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="reservations">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="reservations">
                     <i class="fas fa-calendar-check w-5"></i>Reservations
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="menu">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="menu">
                     <i class="fas fa-utensils w-5"></i>Menu
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="orders">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="orders">
                     <i class="fas fa-shopping-basket w-5"></i>Orders
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="inventory">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="inventory">
                     <i class="fas fa-boxes w-5"></i>Inventory
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="reports">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="reports">
                     <i class="fas fa-chart-bar w-5"></i>Reports
                 </a>
-                <a href="#" class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold" data-page="settings">
+                <a href="#"
+                    class="nav-item flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 font-semibold"
+                    data-page="settings">
                     <i class="fas fa-cog w-5"></i>Settings
                 </a>
             </nav>
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-semibold">AD</div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-semibold">
+                        AD</div>
                     <div>
                         <div class="text-sm font-semibold text-gray-800">Admin User</div>
                         <div class="text-xs text-gray-600">Administrator</div>
@@ -98,13 +132,18 @@
                 <div class="flex items-center space-x-4 flex-1">
                     <button id="mobileToggle" class="md:hidden p-2 rounded-md hover:bg-gray-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                     <div class="relative flex-1 max-w-md lg:max-w-lg">
-                        <input type="text" placeholder="Search menus, orders, customers..." class="pl-10 pr-4 py-2.5 w-full border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        <input type="text" placeholder="Search menus, orders, customers..."
+                            class="pl-10 pr-4 py-2.5 w-full border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
                 </div>
@@ -113,11 +152,14 @@
                         <i class="fas fa-bell text-xl"></i>
                         <span class="absolute -top-1 -right-1 flex h-3 w-3">
                             <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 items-center justify-center text-white text-[9px]">3</span>
+                            <span
+                                class="relative inline-flex rounded-full h-3 w-3 bg-red-600 items-center justify-center text-white text-[9px]">3</span>
                         </span>
                     </button>
                     <div class="hidden md:flex items-center space-x-2">
-                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-semibold text-sm">AD</div>
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-semibold text-sm">
+                            AD</div>
                         <div>
                             <div class="text-sm font-semibold text-gray-800">Admin User</div>
                             <div class="text-xs text-gray-600">Administrator</div>
@@ -126,9 +168,9 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
+            <!-- Dashboard Content (Default Active Page) -->
             <div id="dashboard-page" class="page-content active p-4 md:p-6">
-                <!-- Your original dashboard content -->
+                <!-- Dashboard Overview -->
                 <section class="mb-6 md:mb-8">
                     <h1 class="text-xl font-bold mb-2">Restaurant Overview</h1>
                     <p class="text-gray-600 mb-4">Welcome back! Here's what's happening in your restaurant today.</p>
@@ -137,13 +179,16 @@
                     <div class="mb-6">
                         <h2 class="text-lg font-semibold mb-4">Quick Actions</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <button class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
+                            <button
+                                class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
                                 <i class="fas fa-chair"></i>Manage Tables
                             </button>
-                            <button class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
                                 <i class="fas fa-utensils"></i>Manage Menu
                             </button>
-                            <button class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg shadow-lg flex items-center justify-center gap-2">
                                 <i class="fas fa-boxes"></i>Manage Inventory
                             </button>
                         </div>
@@ -151,25 +196,29 @@
 
                     <!-- Revenue Overview -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
-                        <div class="bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg p-4 flex flex-col gap-2 text-white">
+                        <div
+                            class="bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg p-4 flex flex-col gap-2 text-white">
                             <i class="fas fa-money-bill-wave text-2xl"></i>
                             <p class="text-sm">Total Revenue</p>
                             <p class="text-2xl font-bold">$24,800</p>
                             <p class="text-green-200 text-xs font-semibold">+5.2% from last week</p>
                         </div>
-                        <div class="bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg p-4 flex flex-col gap-1 text-white">
+                        <div
+                            class="bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg p-4 flex flex-col gap-1 text-white">
                             <i class="fas fa-shopping-basket text-2xl"></i>
                             <p class="text-sm">Active Orders</p>
                             <p class="text-xl font-semibold">2</p>
                             <p class="text-xs">Currently processing</p>
                         </div>
-                        <div class="bg-gradient-to-r from-green-400 to-green-500 rounded-lg p-4 flex flex-col gap-2 text-white">
+                        <div
+                            class="bg-gradient-to-r from-green-400 to-green-500 rounded-lg p-4 flex flex-col gap-2 text-white">
                             <i class="fas fa-chair text-2xl"></i>
                             <p class="text-sm">Occupied Tables</p>
                             <p class="text-2xl font-bold">1/6</p>
                             <p class="text-green-200 text-xs font-semibold">16% occupancy</p>
                         </div>
-                        <div class="bg-gradient-to-r from-purple-400 to-purple-500 rounded-lg p-4 flex flex-col gap-1 text-white">
+                        <div
+                            class="bg-gradient-to-r from-purple-400 to-purple-500 rounded-lg p-4 flex flex-col gap-1 text-white">
                             <i class="fas fa-clock text-2xl"></i>
                             <p class="text-sm">Pending Tasks</p>
                             <p class="text-xl font-semibold">7</p>
@@ -182,7 +231,8 @@
                         <div class="bg-white rounded-lg p-4 shadow">
                             <h2 class="font-semibold mb-3">Revenue Trend</h2>
                             <p class="text-gray-600 mb-4 text-sm">Daily revenue this week</p>
-                            <div class="h-48 flex items-end justify-center space-x-2 md:space-x-6 px-2 md:px-4 overflow-x-auto">
+                            <div
+                                class="h-48 flex items-end justify-center space-x-2 md:space-x-6 px-2 md:px-4 overflow-x-auto">
                                 <div class="flex flex-col items-center space-y-1 flex-shrink-0">
                                     <div class="bg-orange-500 rounded w-8 md:w-12" style="height: 60px;"></div>
                                     <span class="text-xs text-gray-600">Mon</span>
@@ -213,17 +263,22 @@
                                 </div>
                             </div>
                         </div>
-                       <!-- Popular Menu Items -->
+
                         <div class="bg-white rounded-lg p-4 shadow">
                             <h2 class="font-semibold mb-3">Popular Menu Items</h2>
                             <p class="text-gray-600 mb-4 text-sm">Top ordered dishes this week</p>
                             <div class="flex items-center justify-center h-48">
                                 <ul class="space-y-2 text-sm w-full">
-                                    <li class="flex justify-between"><span class="text-orange-500">Grilled Salmon</span><span class="font-semibold">42 orders</span></li>
-                                    <li class="flex justify-between"><span class="text-purple-500">Beef Burger</span><span class="font-semibold">38 orders</span></li>
-                                    <li class="flex justify-between"><span class="text-green-500">Caesar Salad</span><span class="font-semibold">35 orders</span></li>
-                                    <li class="flex justify-between"><span class="text-blue-500">Margherita Pizza</span><span class="font-semibold">30 orders</span></li>
-                                    <li class="flex justify-between"><span class="text-gray-600">Chocolate Cake</span><span class="font-semibold">25 orders</span></li>
+                                    <li class="flex justify-between"><span class="text-orange-500">Grilled
+                                            Salmon</span><span class="font-semibold">42 orders</span></li>
+                                    <li class="flex justify-between"><span class="text-purple-500">Beef
+                                            Burger</span><span class="font-semibold">38 orders</span></li>
+                                    <li class="flex justify-between"><span class="text-green-500">Caesar
+                                            Salad</span><span class="font-semibold">35 orders</span></li>
+                                    <li class="flex justify-between"><span class="text-blue-500">Margherita
+                                            Pizza</span><span class="font-semibold">30 orders</span></li>
+                                    <li class="flex justify-between"><span class="text-gray-600">Chocolate
+                                            Cake</span><span class="font-semibold">25 orders</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -235,13 +290,17 @@
                     <div class="bg-white shadow rounded-lg p-4 md:p-6">
                         <h3 class="font-semibold mb-4">Recent Activities</h3>
                         <ul class="space-y-3 text-gray-700 text-sm">
-                            <li><strong>Table #5</strong> placed order #1245 <span class="text-xs text-gray-400 float-right">2 mins ago</span></li>
-                            <li><strong>Reservation</strong> for 4 people at 7:30 PM <span class="text-xs text-gray-400 float-right">15 mins ago</span></li>
-                            <li><strong>Order #1243</strong> completed - $85.50 <span class="text-xs text-gray-400 float-right">1 hour ago</span></li>
-                            <li><strong>New menu item</strong> added: Seafood Pasta <span class="text-xs text-gray-400 float-right">2 hours ago</span></li>
+                            <li><strong>Table #5</strong> placed order #1245 <span
+                                    class="text-xs text-gray-400 float-right">2 mins ago</span></li>
+                            <li><strong>Reservation</strong> for 4 people at 7:30 PM <span
+                                    class="text-xs text-gray-400 float-right">15 mins ago</span></li>
+                            <li><strong>Order #1243</strong> completed - $85.50 <span
+                                    class="text-xs text-gray-400 float-right">1 hour ago</span></li>
+                            <li><strong>New menu item</strong> added: Seafood Pasta <span
+                                    class="text-xs text-gray-400 float-right">2 hours ago</span></li>
                         </ul>
                     </div>
-                    <!-- Low Stock Alert -->
+
                     <div class="bg-white shadow rounded-lg p-4 md:p-6">
                         <h3 class="font-semibold mb-4">Low Stock Alerts</h3>
                         <div class="overflow-x-auto">
@@ -348,9 +407,15 @@
                 <section class="mb-6">
                     <h2 class="text-xl font-semibold mb-4">Analytics</h2>
                     <div class="mb-4">
-                        <button onclick="showAnalytics('sales')" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md mr-4">Sales Analytics</button>
-                        <button onclick="showAnalytics('orders')" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-md mr-4">Order Analytics</button>
-                        <button onclick="showAnalytics('menu')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md">Menu Performance</button>
+                        <button onclick="showAnalytics('sales')"
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md mr-4">Sales
+                            Analytics</button>
+                        <button onclick="showAnalytics('orders')"
+                            class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-md mr-4">Order
+                            Analytics</button>
+                        <button onclick="showAnalytics('menu')"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md">Menu
+                            Performance</button>
                     </div>
 
                     <!-- Analytics Views -->
@@ -415,10 +480,12 @@
                             <p class="text-gray-600">Manage and track all restaurant orders</p>
                         </div>
                         <div class="flex space-x-3 mt-4 md:mt-0">
-                            <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                            <button
+                                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
                                 <i class="fas fa-plus"></i> New Order
                             </button>
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
                                 <i class="fas fa-print"></i> Print Orders
                             </button>
                         </div>
@@ -449,19 +516,29 @@
                 <div class="bg-white rounded-lg shadow mb-6">
                     <div class="border-b border-gray-200">
                         <nav class="flex -mb-px">
-                            <button class="order-tab active py-4 px-6 text-center border-b-2 border-orange-500 font-medium text-orange-500" data-status="all">
+                            <button
+                                class="order-tab active py-4 px-6 text-center border-b-2 border-orange-500 font-medium text-orange-500"
+                                data-status="all">
                                 All Orders
                             </button>
-                            <button class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700" data-status="pending">
+                            <button
+                                class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700"
+                                data-status="pending">
                                 Pending
                             </button>
-                            <button class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700" data-status="preparing">
+                            <button
+                                class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700"
+                                data-status="preparing">
                                 Preparing
                             </button>
-                            <button class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700" data-status="ready">
+                            <button
+                                class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700"
+                                data-status="ready">
                                 Ready
                             </button>
-                            <button class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700" data-status="completed">
+                            <button
+                                class="order-tab py-4 px-6 text-center border-b-2 border-transparent font-medium text-gray-500 hover:text-gray-700"
+                                data-status="completed">
                                 Completed
                             </button>
                         </nav>
@@ -471,14 +548,16 @@
                 <!-- Orders Grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
                     <!-- Order Card 1 -->
-                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-yellow-500" data-status="pending">
+                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-yellow-500"
+                        data-status="pending">
                         <div class="p-4">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h3 class="font-bold text-lg">Order #1245</h3>
                                     <p class="text-gray-600 text-sm">Table #5 • 2 guests</p>
                                 </div>
-                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-semibold">Pending</span>
+                                <span
+                                    class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-semibold">Pending</span>
                             </div>
                             <div class="space-y-2 mb-4">
                                 <div class="flex justify-between text-sm">
@@ -497,10 +576,12 @@
                             <div class="border-t pt-3 flex justify-between items-center">
                                 <div class="font-bold">Total: $50.00</div>
                                 <div class="flex space-x-2">
-                                    <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    <button
+                                        class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors">
                                         Accept
                                     </button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    <button
+                                        class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
                                         Decline
                                     </button>
                                 </div>
@@ -509,14 +590,16 @@
                     </div>
 
                     <!-- Order Card 2 -->
-                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-blue-500" data-status="preparing">
+                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-blue-500"
+                        data-status="preparing">
                         <div class="p-4">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h3 class="font-bold text-lg">Order #1246</h3>
                                     <p class="text-gray-600 text-sm">Takeaway • Customer: John Doe</p>
                                 </div>
-                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Preparing</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Preparing</span>
                             </div>
                             <div class="space-y-2 mb-4">
                                 <div class="flex justify-between text-sm">
@@ -541,10 +624,12 @@
                                     <div class="bg-blue-600 h-2 rounded-full w-3/4"></div>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    <button
+                                        class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors">
                                         Ready
                                     </button>
-                                    <button class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    <button
+                                        class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors">
                                         Delay
                                     </button>
                                 </div>
@@ -553,14 +638,16 @@
                     </div>
 
                     <!-- Order Card 3 -->
-                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-green-500" data-status="ready">
+                    <div class="order-card bg-white rounded-lg shadow-lg border-l-4 border-green-500"
+                        data-status="ready">
                         <div class="p-4">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h3 class="font-bold text-lg">Order #1247</h3>
                                     <p class="text-gray-600 text-sm">Delivery • Customer: Sarah</p>
                                 </div>
-                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">Ready</span>
+                                <span
+                                    class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">Ready</span>
                             </div>
                             <div class="space-y-2 mb-4">
                                 <div class="flex justify-between text-sm">
@@ -578,10 +665,12 @@
                                     <div class="text-sm text-red-600">Waiting 5 mins</div>
                                 </div>
                                 <div class="flex justify-between">
-                                    <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors flex-1 mr-2">
+                                    <button
+                                        class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors flex-1 mr-2">
                                         Deliver
                                     </button>
-                                    <button class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors">
+                                    <button
+                                        class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors">
                                         <i class="fas fa-phone"></i>
                                     </button>
                                 </div>
@@ -612,7 +701,9 @@
                                     <td class="py-3">Customer One</td>
                                     <td class="py-3">Dine-in</td>
                                     <td class="py-3">$50.00</td>
-                                    <td class="py-3"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending</span></td>
+                                    <td class="py-3"><span
+                                            class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Pending</span>
+                                    </td>
                                     <td class="py-3">2 mins ago</td>
                                     <td class="py-3">
                                         <button class="text-blue-600 hover:text-blue-800 mr-2">
@@ -628,7 +719,9 @@
                                     <td class="py-3">Safin Ahmed</td>
                                     <td class="py-3">Takeaway</td>
                                     <td class="py-3">$60.00</td>
-                                    <td class="py-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Completed</span></td>
+                                    <td class="py-3"><span
+                                            class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Completed</span>
+                                    </td>
                                     <td class="py-3">15 mins ago</td>
                                     <td class="py-3">
                                         <button class="text-blue-600 hover:text-blue-800 mr-2">
@@ -644,10 +737,89 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Menu Management Content -->
+            <div id="menu-page" class="page-content p-4 md:p-6">
+                <!-- Menu Management Header -->
+                <div class="mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800">Menu Management</h1>
+                            <p class="text-gray-600">Manage your restaurant menu items and categories</p>
+                        </div>
+                        <div class="flex space-x-3 mt-4 md:mt-0">
+                            <button
+                                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                                <i class="fas fa-plus"></i> Add New Item
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                                <i class="fas fa-download"></i> Export Menu
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Menu Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-orange-500">
+                            <div class="text-sm text-gray-600">Total Items</div>
+                            <div class="text-2xl font-bold" id="total-items">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="text-sm text-gray-600">Categories</div>
+                            <div class="text-2xl font-bold" id="total-categories">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-500">
+                            <div class="text-sm text-gray-600">Available</div>
+                            <div class="text-2xl font-bold" id="available-items">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-red-500">
+                            <div class="text-sm text-gray-600">Out of Stock</div>
+                            <div class="text-2xl font-bold" id="out-of-stock">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Content -->
+                <div class="flex gap-8 flex-col-reverse lg:flex-row">
+                    <div class="w-full lg:w-[75%]">
+                        <!-- Category Section -->
+                        <div class="bg-gray-100 rounded-2xl p-4 mb-6">
+                            <h2 class="text-lg font-semibold mb-3">Categories</h2>
+                            <div id="menu-catagory" class="flex flex-wrap gap-3">
+                                <!-- Categories will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Menu Items Grid -->
+                        <div id="cart-conteiner" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Menu items will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Cart Section -->
+                    <div class="w-full lg:w-[25%] bg-white p-6 shadow-lg rounded-lg h-fit sticky top-4">
+                        <h1 class="font-semibold text-2xl mb-4">Order Cart</h1>
+                        <div id="cart-holder" class="flex flex-col gap-3">
+                            <p class="text-gray-500 text-center py-8">Your cart is empty</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-semibold">Total:</span>
+                                <span class="font-bold text-orange-500 text-xl" id="cart-total">0 Taka</span>
+                            </div>
+                            <button
+                                class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold">
+                                Place Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
- <script src="./Script/admin_dashboard.js"></script>
+    <script src="./Script/admin_dashboard.js"></script>
 </body>
 
 </html>

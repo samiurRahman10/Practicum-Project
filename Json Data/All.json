@@ -2,11 +2,10 @@
   "restaurant": {
     "name": "The Cozy Spoon",
      "categories": [
-    { "id": 0, "name": "All" },
-    { "id": 1, "name": "Main Course" },
-    { "id": 2, "name": "Starters" },
-    { "id": 3, "name": "Desserts" },
-    { "id": 4, "name": "Drinks" }
+    { "id": 0, "name": "Main Course" },
+    { "id": 1, "name": "Starters" },
+    { "id": 2, "name": "Desserts" },
+    { "id": 3, "name": "Drinks" }
   ]
   },
   "menu": [
