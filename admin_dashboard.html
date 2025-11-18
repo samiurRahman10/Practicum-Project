@@ -801,7 +801,8 @@
                     </div>
 
                     <!-- Cart Section -->
-                    <div id="cart-section" class="w-full lg:w-[30%] bg-white p-6 shadow-lg rounded-lg h-fit md:sticky md:top-4">
+                    <div id="cart-section"
+                        class="w-full lg:w-[30%] bg-white p-6 shadow-lg rounded-lg h-fit md:sticky md:top-4">
 
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex gap-1 items-center">
@@ -844,6 +845,273 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Inventory Management Content Starts-->
+            <div id="inventory-page" class="page-content p-4 md:p-6">
+                <!-- Inventory Management Header -->
+                <div class="mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800">Inventory Management</h1>
+                            <p class="text-gray-600">Manage your restaurant inventory and track stock levels</p>
+                        </div>
+                        <div class="flex space-x-3 mt-4 md:mt-0">
+                            <button onclick="openAddItemModal()"
+                                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                                <i class="fas fa-plus"></i> Add New Item
+                            </button>
+                            <button onclick="exportInventory()"
+                                class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                                <i class="fas fa-download"></i> Export Inventory
+                            </button>
+                            <button onclick="refreshInventory()"
+                                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                                <i class="fas fa-sync"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Inventory Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-500">
+                            <div class="text-sm text-gray-600">Total Items</div>
+                            <div class="text-2xl font-bold" id="total-inventory-items">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="text-sm text-gray-600">In Stock</div>
+                            <div class="text-2xl font-bold" id="in-stock-items">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-yellow-500">
+                            <div class="text-sm text-gray-600">Low Stock</div>
+                            <div class="text-2xl font-bold" id="low-stock-items">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-red-500">
+                            <div class="text-sm text-gray-600">Out of Stock</div>
+                            <div class="text-2xl font-bold" id="out-of-stock-items">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Bar -->
+                <div class="bg-white rounded-lg shadow p-4 mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" id="inventory-search" placeholder="Search inventory items..."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+                        <div class="flex gap-2">
+                            <select id="category-filter"
+                                class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <option value="all">All Categories</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="meat">Meat & Poultry</option>
+                                <option value="dairy">Dairy</option>
+                                <option value="beverages">Beverages</option>
+                                <option value="spices">Spices</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <select id="status-filter"
+                                class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <option value="all">All Status</option>
+                                <option value="in_stock">In Stock</option>
+                                <option value="low_stock">Low Stock</option>
+                                <option value="out_of_stock">Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Table -->
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Item Name</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Category</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Current Stock</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Unit</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Reorder Level</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Supplier</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Status</th>
+                                    <th class="px-6 py-3 font-semibold text-gray-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table-body" class="divide-y divide-gray-200">
+                                <!-- Inventory items will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Low Stock Alerts Section -->
+                <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-semibold text-yellow-800 flex items-center gap-2">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Low Stock Alerts
+                        </h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm font-semibold"
+                            id="low-stock-count">0 items</span>
+                    </div>
+                    <div id="low-stock-alerts" class="space-y-2">
+                        <!-- Low stock alerts will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Add Item Modal -->
+            <div id="add-item-modal"
+                class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+                <div class="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto mx-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Add Inventory Item</h3>
+                            <button onclick="closeAddItemModal()" class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="add-item-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Item Name</label>
+                                <input type="text" id="item-name" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                                <select id="item-category" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                    <option value="">Select Category</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="meat">Meat & Poultry</option>
+                                    <option value="dairy">Dairy</option>
+                                    <option value="beverages">Beverages</option>
+                                    <option value="spices">Spices</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Current Stock</label>
+                                    <input type="number" id="item-stock" required min="0" step="0.01"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Unit</label>
+                                    <select id="item-unit" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                        <option value="">Select Unit</option>
+                                        <option value="kg">kg</option>
+                                        <option value="g">g</option>
+                                        <option value="L">L</option>
+                                        <option value="ml">ml</option>
+                                        <option value="pieces">pieces</option>
+                                        <option value="bottles">bottles</option>
+                                        <option value="packets">packets</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Reorder Level</label>
+                                <input type="number" id="item-reorder-level" required min="0" step="0.01"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Supplier</label>
+                                <input type="text" id="item-supplier"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div class="flex gap-3 pt-4">
+                                <button type="button" onclick="closeAddItemModal()"
+                                    class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                                    Cancel
+                                </button>
+                                <button type="submit"
+                                    class="flex-1 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">
+                                    Add Item
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--  Inventory Edit Item Modal -->
+            <div id="edit-item-modal"
+                class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+                <div class="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto mx-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Edit Inventory Item</h3>
+                            <button onclick="closeEditItemModal()" class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="edit-item-form" class="space-y-4">
+                            <input type="hidden" id="edit-item-id">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Item Name</label>
+                                <input type="text" id="edit-item-name" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                                <select id="edit-item-category" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="meat">Meat & Poultry</option>
+                                    <option value="dairy">Dairy</option>
+                                    <option value="beverages">Beverages</option>
+                                    <option value="spices">Spices</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Current Stock</label>
+                                    <input type="number" id="edit-item-stock" required min="0" step="0.01"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Unit</label>
+                                    <select id="edit-item-unit" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                        <option value="kg">kg</option>
+                                        <option value="g">g</option>
+                                        <option value="L">L</option>
+                                        <option value="ml">ml</option>
+                                        <option value="pieces">pieces</option>
+                                        <option value="bottles">bottles</option>
+                                        <option value="packets">packets</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Reorder Level</label>
+                                <input type="number" id="edit-item-reorder-level" required min="0" step="0.01"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Supplier</label>
+                                <input type="text" id="edit-item-supplier"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            </div>
+                            <div class="flex gap-3 pt-4">
+                                <button type="button" onclick="closeEditItemModal()"
+                                    class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                                    Cancel
+                                </button>
+                                <button type="submit"
+                                    class="flex-1 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">
+                                    Update Item
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Inventory Ends -->
+
         </div>
     </div>
 
@@ -852,6 +1120,7 @@
     <script src="./Script/menu.js"></script>
     <script src="./Script/navigation.js"></script>
     <script src="./Script/order.js"></script>
+    <script src="./Script/inventory.js"></script>
 </body>
 
 </html>
